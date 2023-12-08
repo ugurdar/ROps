@@ -1,3 +1,5 @@
+safd
+
 # CI/CD
 
 Continuous Integration(CI):
@@ -40,12 +42,14 @@ Parallel execeution is possible.
 Executed on the compute machine called runners.
 
 ## Intermediate YAML
+
 Represents multiline strings or blocks of text
 - Code snippets (shell commands)
 - Paragraphs (logs)
 - Configuration files
 
 ### Style indicators - letral
+
 *Literal style* (|) preserves line break and identation
 Useful for writing shell commands
 commands: |
@@ -111,5 +115,5 @@ workflow:
           feel free to contact the Engineer on call.
       if: run.state == "failed"
 
-## Setting a basic CI pipeline
+# Setting a basic CI pipeline
 
