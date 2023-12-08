@@ -1,4 +1,5 @@
 # CI/CD
+
 Continuous Integration(CI):
 The practice of frequently building, testing and merging code changes into a shared repo.
 **Allows developers to detect integration issues early and maintain a consistent codebase.
@@ -6,6 +7,7 @@ Conitnuous Delivery (CD): Unsures that code changes can be deployed to prod. at 
 Continuous Deployment (CD): Automatically deploys code changes to production without manual intervention.
 
 ## CI/CD in ML
+
 Data dependency: Data versioning and management strategies.
 Experimentation: Automating hyperparameter tuning.
 Model Versioning: Improving collaoration.
@@ -13,6 +15,7 @@ Testing Paradigm: Goes beyond traditional functional and unit testing.
 Continuous Deployment Challenges: Complexities in model serving, monitroing and updates.
 
 # GitHub Actions (GHA)
+
 Checkout -> Env. Setup -> LINT & TEST -> Build -> Deploy
 
 *Event*: is a specific acitivity in a repository that triggers a workflow run.
