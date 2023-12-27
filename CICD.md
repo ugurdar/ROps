@@ -89,6 +89,7 @@ Multi-document YAML
 - name: ...
 
 ### Example
+
 config:
   slack:
     channels:
@@ -96,12 +97,16 @@ config:
       - builds-911
 
 workflow:
+
    #Use the correct block style indicator 
    #while writing commands to run
   run: |
+  
     echo "Running script.py"
     python3 script.py
+    
   notify:
+  
     - slack:
         # Reference the Slack channels using 
         # placeholder defined in config block
