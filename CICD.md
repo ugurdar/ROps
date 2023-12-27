@@ -75,21 +75,23 @@ No additional symbol needed for representation
 ### Dynamic value injection
 
 Expressions allow parser to dynamically substitute values
+ ```
 Usage:
   ENV variables
   Ref other parts of YAML
 ${{ ... }}
 database:
   host: ${{ config.database.host }}
-
+ ```
 Multi-document YAML
+ ```
 ---
 - name: Ugur
 ----
 - name: ...
-
+ ```
 ### Example
-
+ ```
 config:
   slack:
     channels:
@@ -115,6 +117,7 @@ config:
           In case further assistance is required,
           feel free to contact the Engineer on call.
       if: run.state == "failed"
+       ```
 
 # Setting a basic CI pipeline
 
@@ -124,6 +127,7 @@ config:
   ${{ context.XXXX }}
   ## Variables
   Store non-sensitive information in plain text: compiler flags, usernames, file paths
+  ```
   name: Greeting on variable day
   #Global Env
   env:
@@ -138,16 +142,19 @@ config:
         - run: |
               echo "${{ env.Greeting }} \
               ${{ env.First_Name }}."
+  ```
 
 ## Secrets
 Store senstive information in encrrpyted manner: password API keys
 $[[ secrets.SuperSecrets }}
+```
 steps:
  -name: Hello world action
   env: # set the secret as an env var
       super_secret: ${{ secrets.SuperSecret }}
   with: # Or as an input
       super_secret: ${{ secrets.SuperSecret }}
+```
 
 Repository -> Settings -> Security -> Secrets and Variables -> Actions -> 
 New RepoSecret -> Name and Secret.
@@ -194,6 +201,32 @@ jobs:
         run: |
           echo "Global Variable: ${{ env.GLOBAL_VARIABLE }}"
           echo "Set job Variable: ${{ env.JOB_VARIABLE }}"
+```
+
+```
+name: Testing Secrets
+
+on:
+  # Write the event triggering the workflow
+  pull_request:
+    branches: master
+
+jobs:
+  print_secrets:
+    runs-on: ubuntu-latest
+    
+    permissions: 
+      # Grant the write permissions
+      pull-requests: write
+
+    steps:
+      - name: Comment on Pull Request
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          # Access the GITHUB_TOKEN token from secrets
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          message: |
+            Hello world ! :wave:
 ```
     
   
