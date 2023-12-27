@@ -95,18 +95,13 @@ config:
     channels:
       - workflow-orchestration
       - builds-911
-
-workflow:
-
+  workflow:
    #Use the correct block style indicator 
    #while writing commands to run
   run: |
-  
     echo "Running script.py"
     python3 script.py
-    
   notify:
-  
     - slack:
         # Reference the Slack channels using 
         # placeholder defined in config block
@@ -122,4 +117,53 @@ workflow:
       if: run.state == "failed"
 
 # Setting a basic CI pipeline
+
+# Environment Variables and Secrets
+- Access information about predefined variables and data
+- workflow runs, variables, runner environments, jobs and steps
+  ${{ context.XXXX }}
+  ## Variables
+  Store non-sensitive information in plain text: compiler flags, usernames, file paths
+  name: Greeting on variable day
+  #Global Env
+  env:
+    Greeting: Hello
+  jobs:
+    greeting_job:
+      runs-on: ubuntu-latest
+      # Local enc scoped to greeting_job
+      env:
+        Frist_Name: Ravi
+      steps:
+        - run: |
+              echo "${{ env.Greeting }} \
+              ${{ env.First_Name }}."
+
+## Secrets
+Store senstive information in encrrpyted manner: password API keys
+$[[ secrets.SuperSecrets }}
+steps:
+ -name: Hello world action
+  env: # set the secret as an env var
+      super_secret: ${{ secrets.SuperSecret }}
+  with: # Or as an input
+      super_secret: ${{ secrets.SuperSecret }}
+
+Repository -> Settings -> Security -> Secrets and Variables -> Actions -> 
+New RepoSecret -> Name and Secret.
+GITHUB_TOKEN secret ${{ secrets.GITHUB_TOKEN }} automatically created.
+
+Write comment in PR
+permission: 
+  pull-request: write
+steps:
+  - name Commenct PR
+    uses: thollander/actions-comment-pull-request@v2
+    with:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+      message: |
+        Hello world ! :wave:
+    
+  
+  
 
