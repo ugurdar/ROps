@@ -154,6 +154,7 @@ New RepoSecret -> Name and Secret.
 GITHUB_TOKEN secret ${{ secrets.GITHUB_TOKEN }} automatically created.
 
 Write comment in PR
+```
 permission: 
   pull-request: write
 steps:
@@ -163,6 +164,37 @@ steps:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
       message: |
         Hello world ! :wave:
+```
+
+```
+name: Testing Environment variables
+
+on:
+  pull_request:
+    # Write the target branch
+    branches: main
+
+env:
+  # Set the value of global environment variable
+  GLOBAL_VARIABLE: global_value
+
+jobs:
+  
+  # Job block
+  print_env_and_secrets:
+    runs-on: ubuntu-latest
+    
+    env:
+      # Set the value of local environment variable
+      JOB_VARIABLE: job_value
+
+    steps:
+      - name: Print Variables
+        # Write the environment variable whose value is set
+        run: |
+          echo "Global Variable: ${{ env.GLOBAL_VARIABLE }}"
+          echo "Set job Variable: ${{ env.JOB_VARIABLE }}"
+```
     
   
   
