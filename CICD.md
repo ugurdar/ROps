@@ -1,6 +1,6 @@
-safd
 
-# CI/CD
+# CI/CD
+
 
 Continuous Integration(CI):
 The practice of frequently building, testing and merging code changes into a shared repo.
@@ -8,7 +8,7 @@ The practice of frequently building, testing and merging code changes into a sha
 Conitnuous Delivery (CD): Unsures that code changes can be deployed to prod. at any time but requeires manual approval.
 Continuous Deployment (CD): Automatically deploys code changes to production without manual intervention.
 
-## CI/CD in ML
+## CI/CD in ML
 
 Data dependency: Data versioning and management strategies.
 Experimentation: Automating hyperparameter tuning.
@@ -16,7 +16,7 @@ Model Versioning: Improving collaoration.
 Testing Paradigm: Goes beyond traditional functional and unit testing.
 Continuous Deployment Challenges: Complexities in model serving, monitroing and updates.
 
-# GitHub Actions (GHA)
+# GitHub Actions (GHA)
 
 Checkout -> Env. Setup -> LINT & TEST -> Build -> Deploy
 
@@ -41,14 +41,14 @@ Each job is independent.
 Parallel execeution is possible.
 Executed on the compute machine called runners.
 
-## Intermediate YAML
+## Intermediate YAML 
 
 Represents multiline strings or blocks of text
 - Code snippets (shell commands)
 - Paragraphs (logs)
 - Configuration files
-
-### Style indicators - letral
+  
+### Style indicators - letral
 
 *Literal style* (|) preserves line break and identation
 Useful for writing shell commands
@@ -62,7 +62,7 @@ message: >
   lorem ipsum lorem 
   ipsum lorem.
 
-### Chomping indicators
+### Chomping indicators
 Control the behaviour of newlines at he end of the string
 added after the style indicators
 
@@ -72,7 +72,8 @@ No additional symbol needed for representation
 *strip*(-) removes all newlines at the end
 *keep* (+) retains all newlines at the end
 
-### Dynamic value injection
+### Dynamic value injection
+
 Expressions allow parser to dynamically substitute values
 Usage:
   ENV variables
@@ -95,8 +96,8 @@ config:
       - builds-911
 
 workflow:
-  # Use the correct block style indicator 
-  # while writing commands to run
+   #Use the correct block style indicator 
+   #while writing commands to run
   run: |
     echo "Running script.py"
     python3 script.py
